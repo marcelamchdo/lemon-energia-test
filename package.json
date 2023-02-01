@@ -2,7 +2,7 @@
   "name": "lemon-energia-test",
   "version": "1.0.0",
   "description": "Desenvolvimento de API para verificar a elegibidade do cliente. / Teste para vaga de Backend Jr. da Lemon ",
-  "main": "src/index.js",
+  "main": "src/api/index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
