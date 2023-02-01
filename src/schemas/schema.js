@@ -1,4 +1,4 @@
-const { tiposDeConexao, classesDeConsumo, modalidadesTarifarias, cpf, cnpj } = require('./types.js')
+const { tiposDeConexao, classesDeConsumo, modalidadesTarifarias, cpf, cnpj } = require('./tipos')
 
 const enumOf = values => ({
   type: typeof values[0],
@@ -21,7 +21,7 @@ const input = {
     tipoDeConexao: enumOf(tiposDeConexao),
     classeDeConsumo: enumOf(classesDeConsumo),
     modalidadeTarifaria: enumOf(modalidadesTarifarias),
-    historicoDeConsumo: {
+    historicoDeConsumo: { // em kWh
       type: 'array',
       minItems: 3,
       maxItems: 12,
@@ -41,7 +41,7 @@ const output = {
       additionalProperties: false,
       required: ['elegivel', 'economiaAnualDeCO2'],
       properties: {
-        elegivel: enumOf([true]),
+        elegivel: enumOf([true]), // always true
         economiaAnualDeCO2: { type: 'number', minimum: 0 },
       },
     },
@@ -50,7 +50,7 @@ const output = {
       additionalProperties: false,
       required: ['elegivel', 'razoesDeInelegibilidade'],
       properties: {
-        elegivel: enumOf([false]), 
+        elegivel: enumOf([false]), // always false
         razoesDeInelegibilidade: {
           type: 'array',
           uniqueItems: true,
