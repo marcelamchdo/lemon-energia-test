@@ -1,0 +1,36 @@
+{
+  "name": "lemon-energia-test",
+  "version": "1.0.0",
+  "description": "Desenvolvimento de API para verificar a elegibidade do cliente. / Teste para vaga de Backend Jr. da Lemon ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelamchdo/lemon-energia-test.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mocha",
+    "backend",
+    "lemon"
+  ],
+  "author": "marcelamchdo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelamchdo/lemon-energia-test/issues"
+  },
+  "homepage": "https://github.com/marcelamchdo/lemon-energia-test#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "git-commit-msg-linter": "^4.5.0",
+    "lint-staged": "^13.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
