@@ -32,8 +32,19 @@ const schema = Joi.object({
       'string.base': '"modalidadeTarifarias" deve ser uma "string"',
       'string.empty': '"modalidadeTarifarias" não pode ser um espaço vazio',
       'any.required': '"modalidadeTarifarias" é necessário',
-    })
+    }),
+  historicoDeConsumo: Joi.array()
+    .required()
+    .min(3)
+    .max(12)
+    .items(Joi.number()
+      .integer()
+      .max(9999)
+      .min(0)),
 });
   
+const validateSchema = (object) => schema.validate(object);
 
-module.exports = (object) => schema.validate(object);
+module.export = {
+  validateSchema,
+}
