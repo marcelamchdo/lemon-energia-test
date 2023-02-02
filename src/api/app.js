@@ -1,9 +1,12 @@
-const cors = require('cors');
-const express = require('express');
+// // const bodyParser = require('body-parser');
+// import cors from 'cors';
+// import express, { json } from 'express';
+// // const router = require('../routes/routes')
+// import controller from '../controller/clientValidation.js';
+// // app.use(bodyParser());
 
-const app = express();
+// // app.use('/', router);
+// app.get('/', controller.getAll)
 
-app.use(express.json());
-app.use(cors());
 
-module.exports = app;
+// export default app;

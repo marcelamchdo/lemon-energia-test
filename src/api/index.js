@@ -1,9 +1,14 @@
-require('dotenv').config();
+import express from "express";
+import getAll from "../controller/clientValidation.js";
 
-const app = require('./app');
+const app = express();
 
-const PORT = process.env.PORT || 3002;
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
-app.listen(process.env.PORT, () => {
-  console.log(`Escutando na porta ${process.env.PORT}`);
+app.post("/", getAll)
+
+app.listen(3000, () => {
+  console.log("API rodando na porta 3000");
 });

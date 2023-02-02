@@ -4,10 +4,11 @@
   "description": "Desenvolvimento de API para verificar a elegibidade do cliente. / Teste para vaga de Backend Jr. da Lemon ",
   "main": "src/api/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "start": "node /src/api/index.js",
+    "dev": "nodemon /src/api/index.js",
     "test": "mocha",
-    "commit": "cz"
+    "commit": "cz",
+    "stop": "(pm2 stop all && pm2 delete all) | grep 'PM2'"
   },
   "repository": {
     "type": "git",
@@ -36,10 +37,13 @@
     }
   },
   "dependencies": {
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "joi": "^17.7.0",
-    "nodemon": "^2.0.20"
-  }
+    "nodemon": "^2.0.20",
+    "pm2": "^5.2.2"
+  },
+    "type": "module"
 }

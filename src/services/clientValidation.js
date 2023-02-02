@@ -1,8 +1,10 @@
+import validateSchema from "../services/inputValidation.js"
+
 const classes = ['residencial', 'industrial', 'comercial']
 
 const modalidades = ['branca', 'convencional']
 
-const { tipoDeConexao, historicoDeConsumo } = input;
+const { tipoDeConexao } = validateSchema;
 
 const consumption = (input) => {
   const minValue = {

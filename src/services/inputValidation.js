@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from "joi"
 
 const schema = Joi.object({
   numeroDoDocumento: Joi.alternatives().try(
@@ -45,6 +45,4 @@ const schema = Joi.object({
   
 const validateSchema = (object) => schema.validate(object);
 
-module.export = {
-  validateSchema,
-}
+export default validateSchema
