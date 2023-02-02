@@ -25,7 +25,7 @@ const schema = Joi.object({
       'string.empty': '"classesDeConsumo" não pode ser um espaço vazio',
       'any.required': '"classesDeConsumo" é necessário',
     }),
-  modalidadeTarifarias: Joi.string()
+  modalidadeTarifaria: Joi.string()
     .valid('azul', 'branca', 'verde', 'convencional')
     .required()
     .messages({
@@ -43,6 +43,6 @@ const schema = Joi.object({
       .min(0)),
 });
   
-const validateSchema = (object) => schema.validate(object);
+const validateSchema = (obj) => schema.validate(obj);
 
-export default validateSchema
+export default validateSchema;
