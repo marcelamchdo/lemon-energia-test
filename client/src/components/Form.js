@@ -28,27 +28,42 @@ const Form = () => {
   const [history, setHistory] = useState([current])
  
   const options = (obj, index) => (<option key={index} value={obj}>{obj}</option>);
-  const enabled = () => {
-    return connection.length > 5 && consumption.length > 5 && fee.length > 3 && document.length > 10
-  }
-
-  // const array = [0,1,2,3,4,5,6,7,8,9,10,11]
-  const validateConsumption = (arg) =>{
-    console.log(`History: ${history} Current: ${current}`)
-    setHistory([...history, arg])
+  
+  const validateConsumption = () =>{
+    if(current !== 0){
+      setHistory([...history, current])
+    }
     setCurrent(0)
   }
   
+  const enabled = () => {
+    return document.length > 10 && history.length > 4
+  }
 
+  const handleClick = () => {
+    setHistory(history.slice(1))
+    const toBackend =  {
+      numeroDoDocumento: document, 
+      tipoDeConexao: connection, 
+      classeDeConsumo: consumption,
+      modalidadeTarifaria: fee,
+      historicoDeConsumo: history.slice(1)
+  }
+  console.log(toBackend);
+
+  }
+  
   return (
   <>
+  {/* {history.map((el, index) => (index >0 && <p>{el}</p>))} */}
+  {history.map((el, index) => (<p key={index}>{el}</p>))}
   <input
     type="number"
     onChange={({target}) => setCurrent(target.value)}
     />Consumo do mês
   <button
     type="button"
-    onClick={() => validateConsumption(current)}
+    onClick={validateConsumption}
     >
       Enviar consumo atual
   </button>
@@ -79,7 +94,7 @@ const Form = () => {
 
   <button
       type='button'
-      // onClick={ () => post(obj)}
+      onClick={ () => handleClick()}
       disabled= {!enabled()}
       >
         Enviar
