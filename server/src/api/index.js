@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import middleware from "../utils/middleware.js";
-import elegibility from "../controller/elegibility.js";
+import controller from "../controller/elegibility.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -19,11 +19,8 @@ app.use(cors());
 // app.use(bodyParser.json({limit: "30mb", entended: true}))
 // app.use(bodyParser.urlencoded({limit: "30mb", entended: true}))
 
-app.get('/', (req, res) => {
-  res.send("Hello World!");
-});
-
-app.post('/', middleware.inputValidation ,elegibility)
+app.post('/', middleware.inputValidation, controller.elegibility)
+app.get('/', controller.getAll)
 
 mongoose.set('strictQuery', false)   
 mongoose.connect(CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true })

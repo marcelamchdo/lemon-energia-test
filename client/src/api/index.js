@@ -13,4 +13,6 @@ const post = async (obj) => {
   }
 }
 
-export default post; 
+const getAll = () => API.get('/')
+
+export { post, getAll}; 

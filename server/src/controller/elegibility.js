@@ -3,8 +3,6 @@ import Model from "../models/index.js"
 
 const elegibility = async (req, res) => {
   try {
-    // const response = validationClient(req.body);
-    // console.log(req.body)
     const newClient = new Model({
       numeroDoDocumento: req.body.numeroDoDocumento,
       tipoDeConexao: req.body.tipoDeConexao,
@@ -16,8 +14,18 @@ const elegibility = async (req, res) => {
     return res.status(200).json(newClient);
   } catch (error) {
     console.log(error.stack)
+    return res.status(500).json('Não foi possível cadastrar o usuário')
   }
-
 }
 
-export default elegibility;
+const getAll = async (req, res) => {
+  try {
+    const clients = await Model.find()
+    return res.status(200).json(clients)
+  } catch (error) {
+    console.log(error.stack)
+    return res.status(500).json('Nenhum usuário foi encontrado')
+  }
+}
+
+export default { elegibility, getAll };

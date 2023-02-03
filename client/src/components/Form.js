@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import post from '../api';
+import { post, getAll } from '../api';
 
 const Form = () => {
   const [connection, setConnection] = useState('monofasico');
@@ -31,9 +31,14 @@ const Form = () => {
       modalidadeTarifaria: fee,
       historicoDeConsumo: history.slice(1)
   }
+
   const posted = await post(toBackend)
   console.log(posted)
+  }
 
+  const getUsers = async () => {
+    const response = await getAll()
+    console.log(response.data)
   }
   
   return (
@@ -82,6 +87,13 @@ const Form = () => {
       >
         Enviar
       </button>
+
+  <button
+    type='button'
+    onClick={() => getUsers()}
+    >
+      Buscar cadastros
+  </button>
   </>
   )
 }
