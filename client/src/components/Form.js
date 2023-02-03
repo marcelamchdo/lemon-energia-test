@@ -23,12 +23,17 @@ const Form = () => {
   const [connection, setConnection] = useState('monofasico');
   const [consumption, setConsumption] = useState('residencial');
   const [fee, setFee] = useState('azul');
+  const [document, setDocument] = useState('');
 
   const options = (obj) => (<option value={obj}>{obj}</option>)
 
-
   return (
   <>
+  <input
+    type='text'
+    value= {document}
+    placeholder= 'Número do Documento'  
+    onChange= {({target}) => setDocument(target.value)}/>
   Tipo de conexão
   <select
     value = {connection}
