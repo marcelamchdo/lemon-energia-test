@@ -24,11 +24,35 @@ const Form = () => {
   const [consumption, setConsumption] = useState('residencial');
   const [fee, setFee] = useState('azul');
   const [document, setDocument] = useState('');
+  const [current, setCurrent] = useState(0);
+  const [history, setHistory] = useState([current])
+ 
+  const options = (obj, index) => (<option key={index} value={obj}>{obj}</option>);
+  const enabled = () => {
+    return connection.length > 5 && consumption.length > 5 && fee.length > 3 && document.length > 10
+  }
 
-  const options = (obj) => (<option value={obj}>{obj}</option>)
+  // const array = [0,1,2,3,4,5,6,7,8,9,10,11]
+  const validateConsumption = (arg) =>{
+    console.log(`History: ${history} Current: ${current}`)
+    setHistory([...history, arg])
+    setCurrent(0)
+  }
+  
 
   return (
   <>
+  <input
+    type="number"
+    onChange={({target}) => setCurrent(target.value)}
+    />Consumo do mês
+  <button
+    type="button"
+    onClick={() => validateConsumption(current)}
+    >
+      Enviar consumo atual
+  </button>
+
   <input
     type='text'
     value= {document}
@@ -38,20 +62,28 @@ const Form = () => {
   <select
     value = {connection}
     onChange = {({ target }) => setConnection(target.value) }>
-    {['monofasico', 'bifasico', 'trifasico'].map((el) => options(el))}
+    {['monofasico', 'bifasico', 'trifasico'].map((el, index) => options(el, index))}
   </select>
   Tipo de consumo
   <select
     value = {consumption}
     onChange = {({ target }) => setConsumption(target.value) }>
-    {['residencial', 'industrial', 'comercial', 'rural', 'poderPublico'].map((el) => options(el))}
+    {['residencial', 'industrial', 'comercial', 'rural', 'poderPublico'].map((el, index) => options(el, index))}
   </select>
   Modalidade Tarifária
   <select
     value = {fee}
     onChange = {({ target }) => setFee(target.value) }>
-    {['azul', 'branca', 'verde', 'convencional'].map((el) => options(el))}
+    {['azul', 'branca', 'verde', 'convencional'].map((el, index) => options(el, index))}
   </select>
+
+  <button
+      type='button'
+      // onClick={ () => post(obj)}
+      disabled= {!enabled()}
+      >
+        Enviar
+      </button>
   </>
   )
 }

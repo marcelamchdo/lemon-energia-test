@@ -28,11 +28,7 @@ function App() {
   return (
     <div className="App">
       <Form />
-      <button
-      type='button'
-      onClick={ () => post(obj)}>
-        Enviar
-      </button>
+
     </div>
   );
 }
