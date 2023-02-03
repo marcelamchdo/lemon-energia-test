@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
-
-// numeroDoDocumento: "14041737706",
-// tipoDeConexao: "bifasico",
-// classeDeConsumo: "comercial",
-// modalidadeTarifaria: "branca",
-// historicoDeConsumo: [
-//   3878,
-//   9760,
-//   5976,
-//   2797,
-//   2483,
-//   5731,
-//   7538,
-//   4392,
-//   7859,
-//   4160,
-//   6941,
-//   4597
-// ]
+import post from '../api';
 
 const Form = () => {
   const [connection, setConnection] = useState('monofasico');
@@ -32,15 +14,15 @@ const Form = () => {
   const validateConsumption = () =>{
     if(current !== 0){
       setHistory([...history, current])
+      setCurrent(0)
     }
-    setCurrent(0)
   }
   
   const enabled = () => {
-    return document.length > 10 && history.length > 4
+    return document.length === 11 && history.length === 13
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setHistory(history.slice(1))
     const toBackend =  {
       numeroDoDocumento: document, 
@@ -49,20 +31,21 @@ const Form = () => {
       modalidadeTarifaria: fee,
       historicoDeConsumo: history.slice(1)
   }
-  console.log(toBackend);
+  const posted = await post(toBackend)
+  console.log(posted)
 
   }
   
   return (
   <>
-  {/* {history.map((el, index) => (index >0 && <p>{el}</p>))} */}
-  {history.map((el, index) => (<p key={index}>{el}</p>))}
+  {history.map((el, index) => (index > 0 && <p key={index}>{el}</p>))}
   <input
     type="number"
     onChange={({target}) => setCurrent(target.value)}
     />Consumo do mês
   <button
     type="button"
+    disabled={history.length > 12}
     onClick={validateConsumption}
     >
       Enviar consumo atual
