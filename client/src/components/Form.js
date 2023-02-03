@@ -8,6 +8,7 @@ const Form = () => {
   const [document, setDocument] = useState('');
   const [current, setCurrent] = useState(0);
   const [history, setHistory] = useState([current])
+  const [users, setUsers] = useState([])
  
   const options = (obj, index) => (<option key={index} value={obj}>{obj}</option>);
   
@@ -38,9 +39,24 @@ const Form = () => {
 
   const getUsers = async () => {
     const response = await getAll()
-    console.log(response.data)
+    setUsers(response.data)
+    users.forEach((i) => {
+      console.log(i.numeroDoDocumento)
+      console.log(i.tipoDeConexao)
+      console.log(i.modalidadeTarifaria)
+      console.log(i.classeDeConsumo)
+    })
   }
   
+  const printUserKeys = (user, index) => (
+    <div key={index}>
+    <p>{user.numeroDoDocumento}</p>
+    <p>{user.tipoDeConexao}</p>
+    <p>{user.modalidadeTarifaria}</p>
+    <p>{user.classeDeConsumo}</p>
+    </div>
+  )
+
   return (
   <>
   {history.map((el, index) => (index > 0 && <p key={index}>{el}</p>))}
@@ -94,6 +110,8 @@ const Form = () => {
     >
       Buscar cadastros
   </button>
+
+  {users.map((user, index) => printUserKeys(user, index))}
   </>
   )
 }
