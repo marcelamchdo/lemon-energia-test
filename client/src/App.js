@@ -1,5 +1,6 @@
 import './App.css';
 import post from './api'
+import Form from './components/Form';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
   
   return (
     <div className="App">
+      <Form />
       <button
       type='button'
       onClick={ () => post(obj)}>
