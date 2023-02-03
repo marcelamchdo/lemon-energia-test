@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import post from './api'
 
@@ -8,7 +7,7 @@ function App() {
     numeroDoDocumento: "14041737706",
     tipoDeConexao: "bifasico",
     classeDeConsumo: "comercial",
-    modalidadeTarifaria: "",
+    modalidadeTarifaria: "branca",
     historicoDeConsumo: [
       3878,
       9760,

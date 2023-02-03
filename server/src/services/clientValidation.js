@@ -16,7 +16,7 @@ const consumption = (validateSchema) => {
   return average > minValue[tipoDeConexao];
 }
  
-const client = (validateSchema) => {
+const validationClient = (validateSchema) => {
   const inegibility = [];
 
   if (!classes.includes(validateSchema.classeDeConsumo)) {
@@ -36,5 +36,5 @@ const client = (validateSchema) => {
   return { elegível: true, economiaAnualDeCO2: anualEconomy };
 }
 
-export default client;
+export default validationClient;
 
