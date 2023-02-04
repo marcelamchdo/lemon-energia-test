@@ -130,10 +130,8 @@ const Form = () => {
 
   {users.map((user, index) => printUserKeys(user, index))}
 
-  {  !response.elegivel && (
-    response.inegibility?.map((el, index) => (<p key={index}>{el}</p>) ))
-  }
-
+  {!response.elegivel && response.inegibility?.map((el, index) => (<p key={index}>{el}</p>))}
+  {response.elegivel && (<p key={1}>{`Economia anual de CO2: ${Number(response.economiaAnualDeCO2).toFixed(2)}`}</p>) }
   </div>
   )
 }
