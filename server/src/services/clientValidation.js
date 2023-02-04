@@ -28,12 +28,12 @@ const validationClient = (validateSchema) => {
   if(!consumption(validateSchema)) {
     inegibility.push('Seu valor de consumo não é válido!');
   }
-  if(inegibility > 0) {
-    return { elegível: false, inegibility };
+  if(inegibility.length > 0) {
+    return { elegivel: false, inegibility };
   }
 
   const anualEconomy = (validateSchema.historicoDeConsumo.reduce((acc, curr) => acc + curr, 0) / 1000) * 84;
-  return { elegível: true, economiaAnualDeCO2: anualEconomy };
+  return { elegivel: true, economiaAnualDeCO2: anualEconomy.toFixed(2) };
 }
 
 export default validationClient;

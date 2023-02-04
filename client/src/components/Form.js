@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { post, getAll } from '../api';
+import './Form.css'
 
 const Form = () => {
   const [connection, setConnection] = useState('monofasico');
   const [consumption, setConsumption] = useState('residencial');
-  const [fee, setFee] = useState('azul');
+  const [fee, setFee] = useState('branca');
   const [document, setDocument] = useState('');
   const [current, setCurrent] = useState(0);
-  const [history, setHistory] = useState([current])
-  const [users, setUsers] = useState([])
+  const [history, setHistory] = useState([current]);
+  const [users, setUsers] = useState([]);
+  const [response, setResponse] = useState({});
  
   const options = (obj, index) => (<option key={index} value={obj}>{obj}</option>);
   
@@ -32,10 +34,11 @@ const Form = () => {
       modalidadeTarifaria: fee,
       historicoDeConsumo: history.slice(1)
   }
+  const data = await post(toBackend)
+  setResponse(data)
 
-  const posted = await post(toBackend)
-  console.log(posted)
   }
+
 
   const getUsers = async () => {
     const response = await getAll()
@@ -58,41 +61,36 @@ const Form = () => {
   )
 
   return (
-  <>
-  {history.map((el, index) => (index > 0 && <p key={index}>{el}</p>))}
-  <input
-    type="number"
-    onChange={({target}) => setCurrent(target.value)}
-    />Consumo do mês
-  <button
-    type="button"
-    disabled={history.length > 12}
-    onClick={validateConsumption}
-    >
-      Enviar consumo atual
-  </button>
-
+  <div className="form">
   <input
     type='text'
     value= {document}
     placeholder= 'Número do Documento'  
-    onChange= {({target}) => setDocument(target.value)}/>
+    onChange= {({target}) => setDocument(target.value)}
+    className="input"
+    />
   Tipo de conexão
   <select
     value = {connection}
-    onChange = {({ target }) => setConnection(target.value) }>
+    onChange = {({ target }) => setConnection(target.value) }
+    className="select"
+    >
     {['monofasico', 'bifasico', 'trifasico'].map((el, index) => options(el, index))}
   </select>
   Tipo de consumo
   <select
     value = {consumption}
-    onChange = {({ target }) => setConsumption(target.value) }>
+    onChange = {({ target }) => setConsumption(target.value) }
+    className="select"
+    >
     {['residencial', 'industrial', 'comercial', 'rural', 'poderPublico'].map((el, index) => options(el, index))}
   </select>
   Modalidade Tarifária
   <select
     value = {fee}
-    onChange = {({ target }) => setFee(target.value) }>
+    onChange = {({ target }) => setFee(target.value) }
+    className="select"
+    >
     {['azul', 'branca', 'verde', 'convencional'].map((el, index) => options(el, index))}
   </select>
 
@@ -100,6 +98,7 @@ const Form = () => {
       type='button'
       onClick={ () => handleClick()}
       disabled= {!enabled()}
+      className="button"
       >
         Enviar
       </button>
@@ -107,12 +106,35 @@ const Form = () => {
   <button
     type='button'
     onClick={() => getUsers()}
+    className="button"
     >
       Buscar cadastros
   </button>
 
+  {history.map((el, index) => (index > 0 && <p key={index}>{el}</p>))}
+  Consumo do mês
+  <input
+    type="number"
+    onChange={({target}) => setCurrent(target.value)}
+    className="input"
+  />
+
+  <button
+  type="button"
+  disabled={history.length > 12}
+  onClick={validateConsumption}
+  className="button"
+  >
+    Enviar consumo atual
+  </button>
+
   {users.map((user, index) => printUserKeys(user, index))}
-  </>
+
+  {  !response.elegivel && (
+    response.inegibility?.map((el, index) => (<p key={index}>{el}</p>) ))
+  }
+
+  </div>
   )
 }
 

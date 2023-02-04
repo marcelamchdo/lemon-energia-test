@@ -1,0 +1,63 @@
+.form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="number"] {
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+}
+
+button[disabled] {
+  background-color: lightgray;
+  cursor: default;
+}
+
+input[type="text"] {
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+select {
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.consumption-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.consumption-history p {
+  margin-bottom: 10px;
+}
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.user-data p {
+  margin-bottom: 10px;
+}

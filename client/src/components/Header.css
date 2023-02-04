@@ -1,0 +1,27 @@
+.header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  }
+  
+  .header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  }
+  
+  .header nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+  }
+  
+  .header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  }
+
+  .lemon {
+    height: 50px;
+  }

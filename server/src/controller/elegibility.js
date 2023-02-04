@@ -1,8 +1,9 @@
-// import validationClient from "../services/clientValidation.js";
+import validationClient from "../services/clientValidation.js";
 import Model from "../models/index.js"
 
 const elegibility = async (req, res) => {
   try {
+    const response = validationClient(req.body)
     const newClient = new Model({
       numeroDoDocumento: req.body.numeroDoDocumento,
       tipoDeConexao: req.body.tipoDeConexao,
@@ -11,7 +12,7 @@ const elegibility = async (req, res) => {
       historicoDeConsumo: req.body.historicoDeConsumo,
     })
     await newClient.save();
-    return res.status(200).json(newClient);
+    return res.status(200).json(response);
   } catch (error) {
     console.log(error.stack)
     return res.status(500).json('Não foi possível cadastrar o usuário')

@@ -5,6 +5,7 @@ import controller from "../controller/elegibility.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import validationClient from "../services/clientValidation.js";
 
 const app = express();
 dotenv.config();
@@ -19,7 +20,7 @@ app.use(cors());
 // app.use(bodyParser.json({limit: "30mb", entended: true}))
 // app.use(bodyParser.urlencoded({limit: "30mb", entended: true}))
 
-app.post('/', middleware.inputValidation, controller.elegibility)
+app.post('/', controller.elegibility)
 app.get('/', controller.getAll)
 
 mongoose.set('strictQuery', false)   
