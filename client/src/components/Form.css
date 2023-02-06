@@ -3,21 +3,45 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 700px;
+  border: solid rgb(228, 228, 228) 1px;
+  background-color: rgb(210, 210, 210);
+  box-shadow: 1px 5px 20px rgb(228, 228, 228);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  color: rgb(77, 77, 77);
+}
+
+p {
+  text-align: center;
+  font-size: 15px;
+  width: 500px;
+  color: rgb(77, 77, 77);
 }
 
 input[type="number"] {
   width: 200px;
   margin-bottom: 20px;
-  padding: 10px;
   font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px grey;
 }
 
 button {
   width: 200px;
   margin-bottom: 20px;
   padding: 10px;
+  margin: 10px;
   font-size: 16px;
-  background-color: lightblue;
+  background-color:  #008059;
+  color: white;
   border: none;
   cursor: pointer;
 }
@@ -25,20 +49,27 @@ button {
 button[disabled] {
   background-color: lightgray;
   cursor: default;
+  background-color:  #bbbbbb;
+  color: grey;
 }
 
 input[type="text"] {
   width: 200px;
   margin-bottom: 20px;
-  padding: 10px;
   font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px grey;
 }
 
 select {
   width: 200px;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
+  border-radius: 5px;
+  border: solid 1px grey;
+  background-color: white;
 }
 
 .consumption-history {
@@ -60,4 +91,38 @@ select {
 
 .user-data p {
   margin-bottom: 10px;
+}
+
+.buttonConsum {
+  display: flex;
+  width: 80px;
+  align-items: center;
+  justify-content: center;
+  height: 30px;  
+  margin-left: 10px;
+}
+
+.mounth {
+  display: flex;
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.consumption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.input-button {
+  display: flex;
+  justify-content: center;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 1px;
 }

@@ -62,10 +62,15 @@ const Form = () => {
 
   return (
   <div className="form">
+  <h2>Formulário de elegibilidade</h2>
+  <p>
+    Este é um formulário para checar a elegibilidade da sua empresa para ser cliente da Lemon Energia
+  </p>
+  Número do Documento
   <input
     type='text'
     value= {document}
-    placeholder= 'Número do Documento'  
+    placeholder= 'Insira aqui o CPF ou CNPJ'  
     onChange= {({target}) => setDocument(target.value)}
     className="input"
     />
@@ -93,40 +98,47 @@ const Form = () => {
     >
     {['azul', 'branca', 'verde', 'convencional'].map((el, index) => options(el, index))}
   </select>
+  
+  <div className="consumption">
+    Consumo do mês
+    <p>Insira aqui o histórico de consumo dos 12 últimos meses (número por número)</p>
+    <div className="input-button">
+      <input
+        type="number"
+        onChange={({target}) => setCurrent(target.value)}
+        className="mounth"
+      />
 
-  <button
-      type='button'
-      onClick={ () => handleClick()}
-      disabled= {!enabled()}
-      className="button"
+      <button
+      type="button"
+      disabled={history.length > 12}
+      onClick={validateConsumption}
+      className="buttonConsum"
       >
         Enviar
       </button>
+    </div>
+      {history.map((el, index) => (index > 0 && <p className="numbers" key={index}>{el}</p>))}
+  </div>
 
-  <button
-    type='button'
-    onClick={() => getUsers()}
-    className="button"
-    >
-      Buscar cadastros
-  </button>
+  <div className="buttons-finally">
+    <button
+        type='button'
+        onClick={ () => handleClick()}
+        disabled= {!enabled()}
+        className="button"
+        >
+          Enviar
+        </button>
 
-  {history.map((el, index) => (index > 0 && <p key={index}>{el}</p>))}
-  Consumo do mês
-  <input
-    type="number"
-    onChange={({target}) => setCurrent(target.value)}
-    className="input"
-  />
-
-  <button
-  type="button"
-  disabled={history.length > 12}
-  onClick={validateConsumption}
-  className="button"
-  >
-    Enviar consumo atual
-  </button>
+    <button
+      type='button'
+      onClick={() => getUsers()}
+      className="button"
+      >
+        Buscar cadastros
+    </button>
+  </div>
 
   {users.map((user, index) => printUserKeys(user, index))}
 
