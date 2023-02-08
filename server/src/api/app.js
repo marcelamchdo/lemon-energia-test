@@ -8,11 +8,10 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-const MONGOURL = `mongodb://${ process.env.MONGOUSER }}:${ process.env.MONGOPASSWORD }@${ process.env.MONGOHOST }:${ process.env.MONGOPORT }`
+// const MONGOURL = `mongodb://${ process.env.MONGOUSER }}:${ process.env.MONGOPASSWORD }@${ process.env.MONGOHOST }:${ process.env.MONGOPORT }`
 
-const CONNECTION = MONGOURL;
+const CONNECTION = process.env.MONGO;
 const PORT = process.env.MONGOPORT || 7592;
-
 
 app.use(bodyParser.json());
 app.use(cors());
