@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-const CONNECTION = process.env.MONGO;
+const CONNECTION = process.env.MONGOURL;
 const PORT = process.env.PORT || 7592;
 
 app.use(bodyParser.json());
