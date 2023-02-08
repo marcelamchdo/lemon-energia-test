@@ -6,11 +6,32 @@ Esse repositório contém duas pastas:
 
 `/server` : backend do projeto, uma API desenvolvida com Node.js, Express e MongoDB. 
 
-    A API apresenta uma rota post/ que é capaz de receber informações da conta de luz do cliente, salvar o cliente no banco de dados e responder se ele é elegível ou não. Caso seja elegível, retornará também o calculo da economia anual de CO2 que o cliente terá. Caso não seja elegível, retornará o critério de inegibilidade do mesmo.
+    A API apresenta uma rota post/ que é capaz de: 
+    
+    - receber informações da conta de luz do cliente, 
+    - salvar o cliente no banco de dados e 
+    - responder se ele é elegível ou não. 
+    
+    Caso seja elegível:
+    - retornará também o calculo da economia anual de CO2 que o cliente terá. 
+    
+    Caso não seja elegível: 
+    - retornará o critério de inegibilidade do mesmo.
 
 `/client` : frontend do projeto, um formulário desenvolvido em Javascript e React. 
 
-    O frontend do projeto apresenta um formulário que se conecta com o banco de dados usando o axios e é capaz de receber as informações preenchidas pelo cliente e enviá-las ao banco de dados ao clicar no botão enviar, cadastrando um novo cliente no banco. Além disso, ao clicar no botão enviar é impressa a resposta de elegibilidade do cliente. Caso seja elegível, retornará também o calculo da economia anual de CO2 que o cliente terá. Caso não seja elegível, retornará o critério de inegibilidade do mesmo.
+    O frontend do projeto apresenta um formulário que se conecta com o banco de dados usando o axios e é capaz de:
+    
+    - receber as informações preenchidas pelo cliente e 
+    - enviá-las ao banco de dados ao clicar no botão enviar
+    - cadastrar um novo cliente no banco. 
+    - ao clicar no botão enviar é impressa a resposta de elegibilidade do cliente. 
+    
+    Caso seja elegível:
+    - imprimirá também o calculo da economia anual de CO2 que o cliente terá. 
+    
+    Caso não seja elegível:
+    - imprimirá o critério de inegibilidade do mesmo.
 
 # Aplicação funcionando
 
