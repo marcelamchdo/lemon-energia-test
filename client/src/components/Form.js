@@ -34,6 +34,7 @@ const Form = () => {
       modalidadeTarifaria: fee,
       historicoDeConsumo: history.slice(1)
   }
+  
   const data = await post(toBackend)
   setResponse(data)
 
@@ -118,7 +119,9 @@ const Form = () => {
         Enviar
       </button>
     </div>
-      {history.map((el, index) => (index > 0 && <p className="numbers" key={index}>{el}</p>))}
+    <div className="numbers">
+      {history.map((el, index) => (index > 0 && <p key={index}>{el} |</p>))}
+    </div>
   </div>
 
   <div className="buttons-finally">
@@ -142,8 +145,8 @@ const Form = () => {
 
   {users.map((user, index) => printUserKeys(user, index))}
 
-  {!response.elegivel && response.inegibility?.map((el, index) => (<p key={index}>{el}</p>))}
-  {response.elegivel && (<p key={1}>{`Economia anual de CO2: ${Number(response.economiaAnualDeCO2).toFixed(2)}`}</p>) }
+  {!response.elegivel && response.inegibility?.map((el, index) => (<p key={index} className="response">{el}</p>))}
+  {response.elegivel && (<p key={1} className="response">{`Elegível! Economia anual de CO2: ${response.economiaAnualDeCO2}`}</p>) }
   </div>
   )
 }
