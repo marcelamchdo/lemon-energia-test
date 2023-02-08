@@ -8,9 +8,9 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-MONGOURL= `mongodb://${ process.env.MONGOUSER }}:${ process.env.MONGOPASSWORD }@${ process.env.MONGOHOST }:${ process.env.MONGOPORT }`
+const MONGOURL = `mongodb://${ process.env.MONGOUSER }}:${ process.env.MONGOPASSWORD }@${ process.env.MONGOHOST }:${ process.env.MONGOPORT }`
 
-const CONNECTION = process.env.MONGOURL;
+const CONNECTION = MONGOURL;
 const PORT = process.env.MONGOPORT || 7592;
 
 
