@@ -2,10 +2,10 @@
   "name": "lemon-energia-test",
   "version": "1.0.0",
   "description": "Desenvolvimento de API para verificar a elegibidade do cliente. / Teste para vaga de Backend Jr. da Lemon ",
-  "main": "src/api/app.js",
+  "main": "api/app.js",
   "scripts": {
-    "start": "node /src/api/app.js",
-    "dev": "nodemon /src/api/app.js",
+    "start": "node api/app.js",
+    "dev": "nodemon api/app.js",
     "test": "mocha src/tests/**/*.test.js --exit",
     "commit": "cz",
     "stop": "(pm2 stop all && pm2 delete all) | grep 'PM2'"
