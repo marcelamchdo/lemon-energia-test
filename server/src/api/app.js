@@ -9,7 +9,7 @@ const app = express();
 dotenv.config();
 
 const CONNECTION = process.env.MONGO;
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 7592;
 
 app.use(bodyParser.json());
 app.use(cors());
