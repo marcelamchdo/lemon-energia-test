@@ -9,7 +9,7 @@ const app = express();
 dotenv.config();
 
 const CONNECTION = process.env.MONGO;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,7 +23,7 @@ const db = mongoose.connection;
 db.on("error", (error) => [console.log(error)])
 db.once("open", () => console.log("Connected to the database!"))
  
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log(`API rodando na porta ${PORT}`);
 });
 
