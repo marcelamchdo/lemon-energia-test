@@ -4,14 +4,9 @@
   "description": "Desenvolvimento de API para verificar a elegibidade do cliente. / Teste para vaga de Backend Jr. da Lemon ",
   "main": "src/api/app.js",
   "scripts": {
-    "start": "node /src/api/app.js",
-    "dev": "nodemon /src/api/app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "mocha src/tests/**/*.test.js --exit",
-    "test:coverage": "nyc --all --reporter=lcov npm run test",
-    "test:unit": "mocha src/tests/unit/*.test.js --exit",
-    "test:unit:coverage": "nyc --all npm run test:unit",
-    "test:integration": "mocha src/tests/integration/*$NAME*.test.js --exit",
-    "test:integration:coverage": "nyc --all npm run test:integration",
     "commit": "cz",
     "stop": "(pm2 stop all && pm2 delete all) | grep 'PM2'"
   },
