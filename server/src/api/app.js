@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import controller from "./controller/elegibility.js";
+import controller from "../controller/elegibility.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
