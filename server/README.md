@@ -4,8 +4,6 @@ Nem todos os clientes que desejam fazer parte da Lemon podem ser aceitos no mome
 
 # Schemas de Entrada e Saída
 
-
-
 Considere os json schemas abaixo como as definições da entrada e saída para o cálculo de elegibilidade:
 
 ```jsx
