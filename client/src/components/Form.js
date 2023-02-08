@@ -34,12 +34,9 @@ const Form = () => {
       modalidadeTarifaria: fee,
       historicoDeConsumo: history.slice(1)
   }
-  
   const data = await post(toBackend)
   setResponse(data)
-
   }
-
 
   const getUsers = async () => {
     const response = await getAll()
@@ -146,7 +143,7 @@ const Form = () => {
   {users.map((user, index) => printUserKeys(user, index))}
 
   {!response.elegivel && response.inegibility?.map((el, index) => (<p key={index} className="response">{el}</p>))}
-  {response.elegivel && (<p key={1} className="response">{`Elegível! Economia anual de CO2: ${response.economiaAnualDeCO2}`}</p>) }
+  {response.elegivel && (<p key={1} className="response">{`Elegível! Economia anual de CO2: ${Number(response.economiaAnualDeCO2).toFixed(2)}`}</p>) }
   </div>
   )
 }

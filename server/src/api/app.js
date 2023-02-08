@@ -11,7 +11,7 @@ dotenv.config();
 // const MONGOURL = `mongodb://${ process.env.MONGOUSER }}:${ process.env.MONGOPASSWORD }@${ process.env.MONGOHOST }:${ process.env.MONGOPORT }`
 
 const CONNECTION = process.env.MONGO;
-const PORT = process.env.MONGOPORT || 7592;
+const PORT = process.env.MONGOPORT || 4000;
 
 app.use(bodyParser.json());
 app.use(cors());
