@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { post, getAll } from '../api';
 import './Form.css'
+import { cpf, cnpj } from 'cpf-cnpj-validator';
+
 
 const Form = () => {
   const [connection, setConnection] = useState('monofasico');
   const [consumption, setConsumption] = useState('residencial');
   const [fee, setFee] = useState('branca');
-  const [document, setDocument] = useState('');
+  // const [document, setDocument] = useState('');
   const [current, setCurrent] = useState(0);
   const [history, setHistory] = useState([current]);
   const [users, setUsers] = useState([]);
   const [response, setResponse] = useState({});
+  const [value, setValue] = useState("");
+  const [error, setError] = useState(null);
  
   const options = (obj, index) => (<option key={index} value={obj}>{obj}</option>);
   
@@ -18,6 +22,31 @@ const Form = () => {
     if(current !== 0){
       setHistory([...history, current])
       setCurrent(0)
+    }
+  }
+
+  const validateCNPJandCNPJ = (value) => {
+    let error = null;
+  
+    if (!cpf.isValid(value) && value.length <= 11) {
+      error = "CPF inválido";
+    }
+
+    if (!cnpj.isValid(value) && value.length > 11) {
+      error = "CNPJ inválido";
+    }
+    return error;
+  };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+
+    const cpf = validateCNPJandCNPJ(event.target.value);
+
+    if (cpf) {
+      setError(cpf);
+    } else {
+      setError(null);
     }
   }
   
@@ -67,11 +96,12 @@ const Form = () => {
   Número do Documento
   <input
     type='text'
-    value= {document}
+    value= {value}
     placeholder= 'Insira aqui o CPF ou CNPJ'  
-    onChange= {({target}) => setDocument(target.value)}
+    onChange= {handleChange}
     className="input"
     />
+    {error && <p style={{ color: "red" }}>{error}</p>}
   Tipo de conexão
   <select
     value = {connection}
