@@ -59,6 +59,9 @@ Esse repositório contém duas pastas:
         //em seguida inicie a aplicação
         npm run dev
 
+        //para rodar os testes unitários
+        npm run test
+
 3. Dentro do diretorio entre na pasta /client, instale as dependências e inicie a aplicação
 
         //instalando dependências
